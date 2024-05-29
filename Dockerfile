@@ -25,7 +25,9 @@ RUN apt-get update \
         procps \
         sane-utils \
         # For brscan
-        curl \
+        # curl \
+        python3
+        python3-pip
     && apt-get clean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
