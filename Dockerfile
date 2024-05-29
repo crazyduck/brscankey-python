@@ -39,9 +39,11 @@ RUN pip install -r /tmp/requirements.txt
 # This must be mapped to ${ADVERTISE_IP}:54925
 EXPOSE 54925/udp
 
+COPY pypkg/ /tmp/pypkg
+# ADD $BRSCAN4KEY_DEB /tmp/
 
-ADD $BRSCAN4KEY_DEB /tmp/
 RUN echo "${SANED_HOST}" >> /etc/sane.d/net.conf
+
 COPY init.sh /
 RUN chmod +x /init.sh
 
