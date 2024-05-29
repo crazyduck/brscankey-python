@@ -28,21 +28,22 @@ RUN apt-get update \
         # For brscan
         # curl \
         python3 \
-        python3-ply \
-        python3-pyasn1 \
-        python3-pycryptodomex \
-        python3-pysmi \
-        python3-pysnmp \
-        python3-PyYAML \
-        python3-Wand \
-        python3-setuptools \
+        python3-pip \
+        # python3-ply \
+        # python3-pyasn1 \
+        # python3-pycryptodomex \
+        # python3-pysmi \
+        # python3-pysnmp \
+        # python3-PyYAML \
+        # python3-Wand \
+        # python3-setuptools \
     && apt-get clean \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Install required python modules
-# COPY requirements.txt /tmp/
-# RUN pip install -r /tmp/requirements.txt
+COPY requirements.txt /tmp/
+RUN pip install -r /tmp/requirements.txt
 
 # This must be mapped to ${ADVERTISE_IP}:54925
 EXPOSE 54925/udp
