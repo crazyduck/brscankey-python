@@ -43,7 +43,7 @@ RUN apt-get update \
 
 # Install required python modules
 COPY requirements.txt /tmp/
-RUN pip install -r /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt --break-system-packages
 
 # This must be mapped to ${ADVERTISE_IP}:54925
 EXPOSE 54925/udp
