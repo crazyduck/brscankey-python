@@ -2,6 +2,8 @@ ARG MAINTAINER
 FROM debian:stable-slim
 MAINTAINER $MAINTAINER
 
+ARG SANED_HOST
+
 ENV DEBIAN_FRONTEND noninteractive
 
 ARG BRSCAN4KEY_DEB=https://download.brother.com/pub/com/linux/linux/packages/brscan-skey-0.3.2-0.amd64.deb
@@ -27,7 +29,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ADD $BRSCAN4KEY_DEB /tmp/
-
+RUN echo "${SANED_HOST}" >> /etc/sane.d/net.conf
 COPY init.sh /
 RUN chmod +x /init.sh
 

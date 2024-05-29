@@ -2,5 +2,5 @@ services:
   brscan:
     build:
       context: .
-      # args:
-      # -
+      args:
+        - SANED_HOST=192.168.10.25
