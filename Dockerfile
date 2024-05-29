@@ -32,6 +32,14 @@ RUN apt-get update \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Install required python modules
+COPY requirements.txt /tmp/
+RUN pip install -r /tmp/requirements.txt
+
+# This must be mapped to ${ADVERTISE_IP}:54925
+EXPOSE 54925/udp
+
+
 ADD $BRSCAN4KEY_DEB /tmp/
 RUN echo "${SANED_HOST}" >> /etc/sane.d/net.conf
 COPY init.sh /
