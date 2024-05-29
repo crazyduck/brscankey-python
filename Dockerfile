@@ -1,6 +1,6 @@
 ARG MAINTAINER
 # FROM debian:stable-slim
-FROM python:stable
+FROM python:slim
 MAINTAINER $MAINTAINER
 
 ARG SANED_HOST
