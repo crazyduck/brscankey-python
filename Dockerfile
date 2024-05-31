@@ -31,6 +31,7 @@ RUN apt-get update \
         python3-pip \
         build-essential \
         python3-dev \
+        libyaml-dev \
         # python3-ply \
         # python3-pyasn1 \
         # python3-pycryptodomex \
