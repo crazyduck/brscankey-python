@@ -48,13 +48,13 @@ COPY requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt --break-system-packages
 # Build and install brscan pkg
 
+COPY pypkg/ /tmp/pypkg
 RUN cd /tmp/pypkg && python3 setup.py build sdist
 RUN pip install --no-binary :all: /tmp/pypkg/dist/brscan-*.tar.gz --break-system-packages
 
 # This must be mapped to ${ADVERTISE_IP}:54925
 EXPOSE 54925/udp
 
-COPY pypkg/ /tmp/pypkg
 # ADD $BRSCAN4KEY_DEB /tmp/
 
 RUN echo "${SANED_HOST}" >> /etc/sane.d/net.conf
