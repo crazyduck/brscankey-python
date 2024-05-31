@@ -46,6 +46,10 @@ RUN apt-get update \
 # Install required python modules
 COPY requirements.txt /tmp/
 RUN pip install -r /tmp/requirements.txt --break-system-packages
+# Build and install brscan pkg
+
+RUN cd /tmp/pypkg && python3 setup.py build sdist
+RUN pip install --no-binary :all: /tmp/pypkg/dist/brscan-*.tar.gz --break-system-packages
 
 # This must be mapped to ${ADVERTISE_IP}:54925
 EXPOSE 54925/udp
