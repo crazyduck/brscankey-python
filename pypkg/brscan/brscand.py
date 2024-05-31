@@ -19,20 +19,23 @@ from . import snmp
 
 
 def main():
-    print("YOLO")
+    """ Main function of this class """
+    hostname = socket.gethostname()
+    hostip = socket.gethostbyname_ex(hostname)[2][0]
+    print(f"Container IP is: {hostip}")
     parser = argparse.ArgumentParser(
         description='Brother network scanner server')
-    parser.add_argument('bind_addr', metavar='BIND_ADDR',
-                        type=str,
-                        help='IP/host to bind UDP socket to')
+    parser.add_argument('bind_addr', metavar='HOST_ADDR',
+                        type=str, default=hostip,
+                        help='IP/host to bind UDP socket to, should be the container IP')
     parser.add_argument('-p', '--bind-port', metavar='HOST_PORT',
                         type=int, default=54925,
                         help='UDP port number to bind UDP socket to')
-    parser.add_argument('-A', '--advertise-addr', metavar='ADDR',
+    parser.add_argument('-A', '--advertise-addr', metavar='ADVERTISE_ADDR',
                         type=str, default=None,
                         help='IP/host to advertise to scanner')
     parser.add_argument('-P', '--advertise-port', metavar='ADVERTISE_PORT',
-                        type=int, default=None,
+                        type=int, default=54925,
                         help='UDP port number to advertise to scanner')
     parser.add_argument('scanner_addr', metavar='SCANNER_ADDR',
                         type=str,
