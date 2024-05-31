@@ -29,6 +29,7 @@ RUN apt-get update \
         # curl \
         python3 \
         python3-pip \
+        build-essential \
         python3-dev \
         # python3-ply \
         # python3-pyasn1 \
