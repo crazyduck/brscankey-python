@@ -25,13 +25,13 @@ def main():
     parser.add_argument('bind_addr', metavar='BIND_ADDR',
                         type=str,
                         help='IP/host to bind UDP socket to')
-    parser.add_argument('-p', '--bind-port', metavar='PORT',
+    parser.add_argument('-p', '--bind-port', metavar='HOST_PORT',
                         type=int, default=54925,
                         help='UDP port number to bind UDP socket to')
     parser.add_argument('-A', '--advertise-addr', metavar='ADDR',
                         type=str, default=None,
                         help='IP/host to advertise to scanner')
-    parser.add_argument('-P', '--advertise-port', metavar='PORT',
+    parser.add_argument('-P', '--advertise-port', metavar='ADVERTISE_PORT',
                         type=int, default=None,
                         help='UDP port number to advertise to scanner')
     parser.add_argument('scanner_addr', metavar='SCANNER_ADDR',

@@ -64,6 +64,8 @@ EXPOSE 54925/udp
 
 RUN echo "${SANED_HOST}" >> /etc/sane.d/net.conf
 
+# Remove Build dependencies from final build target
+# apt remove python3-dev build-essential
 # Clean /tmp
 # RUN rm -rf /tmp/*
 
