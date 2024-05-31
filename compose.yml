@@ -4,3 +4,5 @@ services:
       context: .
       args:
         - SANED_HOST=192.168.10.25
+    ports:
+      - "54925:54925" # Advertise port
