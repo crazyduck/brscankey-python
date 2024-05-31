@@ -25,14 +25,14 @@ def main():
     print(f"Container IP is: {hostip}")
     parser = argparse.ArgumentParser(
         description='Brother network scanner server')
-    parser.add_argument('bind_addr', metavar='HOST_ADDR',
+    parser.add_argument('-b', 'bind_addr', metavar='HOST_ADDR',
                         type=str, default=hostip,
                         help='IP/host to bind UDP socket to, should be the container IP')
     parser.add_argument('-p', '--bind-port', metavar='HOST_PORT',
                         type=int, default=54925,
                         help='UDP port number to bind UDP socket to')
     parser.add_argument('-A', '--advertise-addr', metavar='ADVERTISE_ADDR',
-                        type=str, default=None,
+                        type=str, default=hostip,
                         help='IP/host to advertise to scanner')
     parser.add_argument('-P', '--advertise-port', metavar='ADVERTISE_PORT',
                         type=int, default=54925,
@@ -41,7 +41,7 @@ def main():
                         type=str,
                         help='IP address of scanner')
     parser.add_argument('-c', '--config', metavar='FILE',
-                        type=str, default='brother-scan.yaml',
+                        type=str, default='/opt/brscan-python/brother-scan.yaml',
                         help='Configuration file')
     args = parser.parse_args()
     if args.advertise_addr is None:
