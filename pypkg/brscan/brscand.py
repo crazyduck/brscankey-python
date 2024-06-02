@@ -25,7 +25,7 @@ def main():
     print(f"Container IP is: {hostip}")
     parser = argparse.ArgumentParser(
         description='Brother network scanner server')
-    parser.add_argument('-b', 'bind_addr', metavar='HOST_ADDR',
+    parser.add_argument('-b', '--bind_addr', metavar='HOST_ADDR',
                         type=str, default=hostip,
                         help='IP/host to bind UDP socket to, should be the container IP')
     parser.add_argument('-p', '--bind-port', metavar='HOST_PORT',
